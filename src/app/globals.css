@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+Hebrew:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --felt: #0a1f14;
+  --felt-mid: #112a1a;
+  --felt-light: #1a3d27;
+  --gold: #c9a84c;
+  --gold-light: #e8c96d;
+  --gold-dim: #7a6230;
+  --chip-red: #c0392b;
+  --chip-blue: #2471a3;
+  --chip-green: #1e8449;
+  --text: #f0ede6;
+  --text-dim: #8a8578;
+  --border: rgba(201,168,76,0.2);
+  --card-bg: rgba(17,42,26,0.8);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--felt);
+  color: var(--text);
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  direction: rtl;
+}
+
+/* Typography */
+.display { font-family: 'Bebas Neue', cursive; letter-spacing: 0.05em; }
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  color: #0a1f14;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s;
+  width: 100%;
+}
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gold);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s;
+  width: 100%;
+}
+.btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+
+/* Inputs */
+.input {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  direction: rtl;
+}
+.input:focus { border-color: var(--gold); }
+.input::placeholder { color: var(--text-dim); }
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Social buttons */
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.2);
+  color: var(--text);
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+.btn-social:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+
+/* Felt texture overlay */
+.felt-bg {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(26,61,39,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(10,31,20,0.6) 0%, transparent 60%),
+    var(--felt);
+}
+
+/* Chip badge */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.chip-gold { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+.chip-green { background: rgba(30,132,73,0.15); color: #2ecc71; border: 1px solid rgba(30,132,73,0.3); }
+.chip-red { background: rgba(192,57,43,0.15); color: #e74c3c; border: 1px solid rgba(192,57,43,0.3); }
+
+/* Animations */
+@keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-in { animation: fade-in 0.4s ease forwards; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
