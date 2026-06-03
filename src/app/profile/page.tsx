@@ -36,12 +36,22 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    sb.auth.getUser().then(({ data }) => {
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get('code')
+    
+    const init = async () => {
+      if (code) {
+        await sb.auth.exchangeCodeForSession(code)
+        window.history.replaceState({}, '', '/profile')
+      }
+      const { data } = await sb.auth.getUser()
       if (!data.user) { router.push('/'); return }
       setUser(data.user)
       setNickname(data.user.user_metadata?.nickname || data.user.user_metadata?.full_name?.split(' ')[0] || 'שחקן')
       setLoading(false)
-    })
+    }
+    
+    init()
   }, [])
 
   async function handleLogout() {
