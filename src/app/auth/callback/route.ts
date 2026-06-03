@@ -23,8 +23,8 @@ export async function GET(request: Request) {
       }
     )
     const { error } = await supabase.auth.exchangeCodeForSession(code)
-    if (!error) return NextResponse.redirect(`${origin}/dashboard`)
+    if (!error) return NextResponse.redirect(`https://fearfold-poker-production-9694.up.railway.app/profile`)
   }
 
-  return NextResponse.redirect(`${origin}/?error=auth`)
+  return NextResponse.redirect(`https://fearfold-poker-production-9694.up.railway.app/?error=auth`)
 }
